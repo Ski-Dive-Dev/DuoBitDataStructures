@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoBitArray", "DuoBitArray.csproj", "{8BEA3B38-FF21-4A62-BE0C-C308FC4D7880}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoBitArray", "DuoBitArray\DuoBitArray.csproj", "{8BEA3B38-FF21-4A62-BE0C-C308FC4D7880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoBitDataStructuresTests", "..\DuoBitDataStructuresTests\DuoBitDataStructuresTests.csproj", "{993333BF-D926-4686-B614-C5019536259F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoBitDataStructuresTests", "DuoBitDataStructuresTests\DuoBitDataStructuresTests.csproj", "{993333BF-D926-4686-B614-C5019536259F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
