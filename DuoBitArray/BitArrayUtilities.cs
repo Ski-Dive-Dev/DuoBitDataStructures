@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     /// <summary>
     /// A variety of bit array related methods that may be broadly useful.

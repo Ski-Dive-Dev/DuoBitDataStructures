@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     /// <summary>
     /// Represents a data structure with two independent bit arrays (left and right).

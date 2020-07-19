@@ -1,4 +1,4 @@
-﻿namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+﻿namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     public interface IBitCollection
     {

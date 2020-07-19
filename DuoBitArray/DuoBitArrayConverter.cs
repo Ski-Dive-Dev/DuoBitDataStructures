@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     /// <summary>
     /// Converts <see cref="IReadOnlyDuoBitArray"/> bit arrays to different types.  Typically used to convert a

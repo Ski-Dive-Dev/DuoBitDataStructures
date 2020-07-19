@@ -1,4 +1,4 @@
-﻿namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+﻿namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     /// <summary>
     /// An interface to a read/write duo bit array, with support for a "fluent" interface.

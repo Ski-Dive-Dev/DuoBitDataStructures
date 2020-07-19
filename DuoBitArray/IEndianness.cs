@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     interface IEndianness
     {

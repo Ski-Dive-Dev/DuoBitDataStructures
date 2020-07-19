@@ -1,4 +1,4 @@
-﻿namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+﻿namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     /// <summary>
     /// An interface to a method which calculates the Hamming weight of a bit array.

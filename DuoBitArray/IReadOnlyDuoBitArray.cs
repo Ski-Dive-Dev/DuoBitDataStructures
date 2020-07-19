@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkiDiveCode.DuoBitDataStructures.BitArrays
+namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 {
     /// <summary>
     /// Represents an array of bits that can be enumerated from both the "left" side and separately, from the
