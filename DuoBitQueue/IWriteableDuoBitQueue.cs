@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using SkiDiveDev.DuoBitDataStructures.BitArrays;
 
 namespace SkiDiveDev.DuoBitDataStructures.BitQueues
