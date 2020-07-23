@@ -1,3 +1,5 @@
+Root Namespace: SkiDiveDev.DuoBitDataStructures
+
 # DuoBitDataStructures
 This is a project that supports bit array based data structures in C# (.NET Standard).
 There are two unique aspects to this project:
