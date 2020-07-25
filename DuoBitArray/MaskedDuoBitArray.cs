@@ -11,7 +11,7 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         protected MaskedDuoBitArray(IDuoBitArrayUtilities duoBitArrayUtilities, int capacity)
         {
             this.duoBitArrayUtilities = duoBitArrayUtilities;
-            bitArray = DuoBitArray.Create(capacity, duoBitArrayUtilities);
+            duoBitArray = DuoBitArray.Create(capacity, duoBitArrayUtilities);
             mask = DuoBitArray.Create(capacity, duoBitArrayUtilities);
         }
 
@@ -21,35 +21,35 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
             return new MaskedDuoBitArray(duoBitArrayUtilities, capacity);
         }
 
-        private readonly IWriteableDuoBitArray bitArray;
+        private readonly IWriteableDuoBitArray duoBitArray;
         private readonly IWriteableDuoBitArray mask;
         private readonly IDuoBitArrayUtilities duoBitArrayUtilities;
 
         public IReadOnlyDuoBitArray Mask => mask;
 
-        public int Length => bitArray.Length;
+        public int Length => duoBitArray.Length;
 
-        public int LeftLength => bitArray.LeftLength;
+        public int LeftLength => duoBitArray.LeftLength;
 
-        public int RightLength => bitArray.RightLength;
+        public int RightLength => duoBitArray.RightLength;
 
-        public int Capacity => bitArray.Capacity;
+        public int Capacity => duoBitArray.Capacity;
 
         public int RemainingCapacity => Capacity - duoBitArrayUtilities.CountSetBits(mask);
 
-        public bool this[int index] => bitArray[index];
+        public bool this[int index] => duoBitArray[index];
 
-        public byte GetBit(int index) => bitArray.GetBit(index);
+        public byte GetBit(int index) => duoBitArray.GetBit(index);
 
         public void SetBit(int index)
         {
-            bitArray.SetBit(index);
+            duoBitArray.SetBit(index);
             mask.SetBit(index);
         }
 
         public void ClearBit(int index)
         {
-            bitArray.ClearBit(index);
+            duoBitArray.ClearBit(index);
             mask.ClearBit(index);
         }
 
@@ -72,7 +72,7 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         public IWriteableDuoBitArray SetLeftBits(byte[] sourceBits, int sourceArrayBitIndex,
             int destinationBitIndex, int numBits)
         {
-            bitArray.SetLeftBits(sourceBits, sourceArrayBitIndex, destinationBitIndex, numBits);
+            duoBitArray.SetLeftBits(sourceBits, sourceArrayBitIndex, destinationBitIndex, numBits);
 
             var sourceBitsMask = GetMaskForConsecutiveLeftBits(numBits);
             mask.SetLeftBits(sourceBitsMask, sourceArrayBitIndex, destinationBitIndex, numBits);
@@ -82,7 +82,7 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         public IWriteableDuoBitArray SetRightBits(byte[] sourceBits, int sourceArrayBitIndex,
             int destinationBitIndex, int numBits)
         {
-            bitArray.SetRightBits(sourceBits, sourceArrayBitIndex, destinationBitIndex, numBits);
+            duoBitArray.SetRightBits(sourceBits, sourceArrayBitIndex, destinationBitIndex, numBits);
 
             var sourceBitsMask = GetMaskForConsecutiveRightBits(numBits);
             mask.SetRightBits(sourceBitsMask, sourceArrayBitIndex, destinationBitIndex, numBits);
@@ -90,11 +90,11 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         }
 
 
-        public IReadOnlyDuoBitArray GetLeftBits(int index, int numBits) => bitArray.GetLeftBits(index, numBits);
+        public IReadOnlyDuoBitArray GetLeftBits(int index, int numBits) => duoBitArray.GetLeftBits(index, numBits);
 
-        public IReadOnlyDuoBitArray GetRightBits(int index, int numBits) => bitArray.GetRightBits(index, numBits);
+        public IReadOnlyDuoBitArray GetRightBits(int index, int numBits) => duoBitArray.GetRightBits(index, numBits);
 
-        public byte[] ToByteArray() => bitArray.ToByteArray();
+        public byte[] ToByteArray() => duoBitArray.ToByteArray();
 
 
         private byte[] GetMaskForConsecutiveLeftBits(int numBits)
