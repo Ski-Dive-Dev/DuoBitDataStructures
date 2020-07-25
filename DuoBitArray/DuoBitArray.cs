@@ -266,6 +266,12 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         private byte[] GetOnlyRelevantSourceBytes(byte[] sourceBits, int sourceArrayBitIndex, int numBits,
             int firstByteIndexInSource, int lastByteIndexInSource, int lastSourceBitIndex, int numBitPositionsToShiftSourceBy)
         {
+            if (numBits == 0)
+            {
+                return new byte[0];
+            }
+
+
             // A copy of the source array allows us to mask-out bits before sourceArrayBitIndex and after the last
             // bit (sourceArrayBitIndex + numBits) so we don't accidently "borrow" bits we're not supposed to --
             // without modifying the array passed in as a reference.
