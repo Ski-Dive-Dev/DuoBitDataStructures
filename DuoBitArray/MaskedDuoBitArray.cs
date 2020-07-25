@@ -102,7 +102,7 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
             var numBytes = duoBitArrayUtilities.GetMinNumBytesToStoreBits(numBits);
             var generatedMask = new byte[numBytes];
             generatedMask[numBytes - 1] =
-                duoBitArrayUtilities.GetByteMsbMask(duoBitArrayUtilities.GetNumBitsInUseInLastByte(numBytes));
+                duoBitArrayUtilities.GetByteMsbMask(duoBitArrayUtilities.GetNumBitsInUseInLastByte(numBits));
 
             for (var i = 0; i < numBytes - 2; i++)
             {
