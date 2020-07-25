@@ -25,28 +25,72 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         private readonly IWriteableDuoBitArray mask;
         private readonly IDuoBitArrayUtilities duoBitArrayUtilities;
 
+
+        /// <summary>
+        /// Gets the current bit mask of valid data.
+        /// </summary>
         public IReadOnlyDuoBitArray Mask => mask;
 
+
+        /// <summary>
+        /// The number of bits that are in use within the bit array.
+        /// </summary>
         public int Length => duoBitArray.Length;
 
         public int LeftLength => duoBitArray.LeftLength;
 
         public int RightLength => duoBitArray.RightLength;
 
+
+        /// <summary>
+        /// The total capacity of the bit array, provided at object construction.
+        /// </summary>
         public int Capacity => duoBitArray.Capacity;
 
+
+        /// <summary>
+        /// The array's remaining capacity is: (<see cref="Capacity"/> minus <see cref="Length"/>).
+        /// </summary>
         public int RemainingCapacity => Capacity - duoBitArrayUtilities.CountSetBits(mask);
 
+
+        /// <summary>
+        /// References the bit identified with the given index within the bit array that underlies both the left
+        /// and the right bit arrays.
+        /// </summary>
+        /// <remarks>
+        /// For non-C# developers, this is called an "indexer".  In the setter, the <see langword="value"/> is the
+        /// value provided on the right-side of an assignment (e.g., <c>fooBitmap[7] = value</c>.)
+        /// </remarks>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public bool this[int index] => duoBitArray[index];
 
+
+        /// <summary>
+        /// Gets the value of the bit identified with the given index within the bit array that underlies both the
+        /// left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public byte GetBit(int index) => duoBitArray.GetBit(index);
 
+
+        /// <summary>
+        /// Sets the value of the bit identified with the given index within the bit array that underlies both the
+        /// left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public void SetBit(int index)
         {
             duoBitArray.SetBit(index);
             mask.SetBit(index);
         }
 
+
+        /// <summary>
+        /// Clears the value of the bit identified with the given index within the bit array that underlies both
+        /// the left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public void ClearBit(int index)
         {
             duoBitArray.ClearBit(index);
@@ -54,7 +98,9 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         }
 
 
-
+        /// <summary>
+        /// Gets the mask of bits that have (yet) to have valid data.
+        /// </summary>
         public IReadOnlyDuoBitArray GetMaskOfUnusedBits()
         {
             var invertedMask = duoBitArrayUtilities.GetInvertedBytes(mask.ToByteArray());
@@ -69,6 +115,18 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         }
 
 
+        /// <summary>
+        /// Sets a range of bits from the given source bits array to the 0-based index in the destination "left"
+        /// bit array.
+        /// </summary>
+        /// <param name="sourceBits">The source data to set to the "left" bit array.</param>
+        /// <param name="sourceArrayBitIndex">The 0-based bit index within the source array where copying starts.
+        /// </param>
+        /// <param name="destinationBitIndex">The 0-based bit index within the "right" bit array that starts to
+        /// received the copied bits.</param>
+        /// <param name="numBits">The number of bits to copy from the source bit array to the "left" bit array.
+        /// </param>
+        /// <returns>A reference to the invoked object for a "fluent" interface.</returns>
         public IWriteableDuoBitArray SetLeftBits(byte[] sourceBits, int sourceArrayBitIndex,
             int destinationBitIndex, int numBits)
         {
@@ -90,10 +148,39 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         }
 
 
+        /// <summary>
+        /// Dequeues <paramref name="numBits"/> consecutive bits starting at the given index.  If padding is
+        /// required, the last byte will be padded with <c>(8 - <paramref name="numBits"/> % 8)</c> zeroes in the
+        /// least-significant-bits.
+        /// </summary>
+        /// <remarks>
+        /// The above formula is not to suggest that a byte might be padded with 8 zeroes.
+        /// </remarks>
+        /// <param name="index">The 0-based index of the first bit position to retrieve.</param>
+        /// <param name="numBits">The number of bits to return.</param>
+        /// <returns>A byte array whose first element's most-significant-bits are filled with data.</returns>
         public IReadOnlyDuoBitArray GetLeftBits(int index, int numBits) => duoBitArray.GetLeftBits(index, numBits);
 
-        public IReadOnlyDuoBitArray GetRightBits(int index, int numBits) => duoBitArray.GetRightBits(index, numBits);
 
+        /// <summary>
+        /// Dequeues <paramref name="numBits"/> consecutive bits starting at the given index.  If padding is
+        /// required, the first byte will be padded with <c>(8 - <paramref name="numBits"/> % 8)</c> zeroes in the
+        /// most-significant-bits.
+        /// </summary>
+        /// <remarks>
+        /// The above formula is not to suggest that a byte might be padded with 8 zeroes.
+        /// </remarks>
+        /// <param name="index">The 0-based index of the first bit position to retrieve.</param>
+        /// <param name="numBits">The number of bits to return.</param>
+        /// <returns>A byte array whose last element's least-significant-bits are filled with data.</returns>
+        public IReadOnlyDuoBitArray GetRightBits(int index, int numBits)
+            => duoBitArray.GetRightBits(index, numBits);
+
+
+        /// <summary>
+        /// Converts the underlying data structure into an array of bytes; the underlying data structure has both
+        /// the "left" and the "right" bit arrays.
+        /// </summary>
         public byte[] ToByteArray() => duoBitArray.ToByteArray();
 
 
