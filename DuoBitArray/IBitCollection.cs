@@ -3,19 +3,19 @@
     public interface IBitCollection
     {
         /// <summary>
-        /// The number of bits that are in use within the bit array.
+        /// The number of bits that are in use within the bit structure.
         /// </summary>
         int Length { get; }
 
 
         /// <summary>
-        /// The total capacity of the bit array, provided at object construction.
+        /// The total capacity of the bit structure, provided at object construction.
         /// </summary>
         int Capacity { get; }
 
 
         /// <summary>
-        /// The array's remaining capacity is: (<see cref="Capacity"/> minus <see cref="Length"/>).
+        /// The remaining capacity is: (<see cref="Capacity"/> minus <see cref="Length"/>).
         /// </summary>
         int RemainingCapacity { get; }
 
