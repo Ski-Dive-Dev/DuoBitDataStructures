@@ -16,12 +16,14 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         /// </summary>
         public byte GetByteMsbMask(int numBitsToMask)
         {
+            const byte byteMaskToTruncateLeftBits = 0xFF;
+
             if (numBitsToMask < 0 || numBitsToMask > 8)
             {
                 throw new ArgumentOutOfRangeException(nameof(numBitsToMask));
             }
 
-            return (byte)(0xFF << (7 - (numBitsToMask - 1) % 8) & 0xFF);
+            return (byte)(0xFF << (7 - (numBitsToMask - 1) % 8) & byteMaskToTruncateLeftBits);
         }
 
 
