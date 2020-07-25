@@ -54,18 +54,35 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         }
 
 
+        /// <summary>
+        /// Gets the value of the bit identified with the given index within the bit array that underlies both the
+        /// left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public byte GetBit(int index)
         {
             var (byteIndex, bitMaskForBitIndex) = GetByteIndexAndBitMaskForBitIndex(index);
             return (byte)((bitArray[byteIndex] & bitMaskForBitIndex) == 0 ? 0 : 1);
         }
 
+
+        /// <summary>
+        /// Sets the value of the bit identified with the given index within the bit array that underlies both the
+        /// left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public void SetBit(int index)
         {
             var (byteIndex, bitMaskForBitIndex) = GetByteIndexAndBitMaskForBitIndex(index);
             bitArray[byteIndex] = (byte)(bitArray[byteIndex] | bitMaskForBitIndex);
         }
 
+
+        /// <summary>
+        /// Clears the value of the bit identified with the given index within the bit array that underlies both
+        /// the left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         public void ClearBit(int index)
         {
             var (byteIndex, bitMaskForBitIndex) = GetByteIndexAndBitMaskForBitIndex(index);
@@ -264,7 +281,8 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
 
 
         private byte[] GetOnlyRelevantSourceBytes(byte[] sourceBits, int sourceArrayBitIndex, int numBits,
-            int firstByteIndexInSource, int lastByteIndexInSource, int lastSourceBitIndex, int numBitPositionsToShiftSourceBy)
+            int firstByteIndexInSource, int lastByteIndexInSource, int lastSourceBitIndex,
+            int numBitPositionsToShiftSourceBy)
         {
             if (numBits == 0)
             {
