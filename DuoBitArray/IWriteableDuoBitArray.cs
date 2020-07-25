@@ -23,6 +23,20 @@
         IWriteableDuoBitArray SetRightBits(byte[] sourceBits, int sourceArrayBitIndex, int destinationBitIndex,
             int numBits);
 
+
+        /// <summary>
+        /// Sets the value of the bit identified with the given index within the bit array that underlies both the
+        /// left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         void SetBit(int index);
+
+
+        /// <summary>
+        /// Clears the value of the bit identified with the given index within the bit array that underlies both
+        /// the left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
+        void ClearBit(int index);
     }
 }
