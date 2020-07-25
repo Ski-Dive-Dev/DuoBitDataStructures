@@ -63,7 +63,7 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
                 .SetLeftBits(invertedMask,
                     sourceArrayBitIndex: 0,
                     destinationBitIndex: 0,
-                    numBits: mask.Length);
+                    numBits: mask.Capacity);
 
             return maskOfUnusedBits;
         }
