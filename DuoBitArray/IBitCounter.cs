@@ -16,6 +16,13 @@
 
     public class BitCounter : IBitCounter
     {
+        protected BitCounter()
+        { /* Default constructor protected from public use. */ }
+
+
+        public static IBitCounter Create() => new BitCounter();
+
+
         /// <summary>
         /// An O(n) method to calculate the Hamming weight of a bit array, where n is the total number of bits in
         /// the array.
