@@ -8,9 +8,20 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
     public class DuoBitArrayUtilities : IDuoBitArrayUtilities
     {
         /// <summary>
+        /// Default constructor using default utilities.
+        /// </summary>
+        public DuoBitArrayUtilities()
+        {
+            bitArrayUtilities = BitArrayUtilities.Create();
+            bitMaskUtilities = BitMaskUtilities.Create();
+            bitCounter = BitCounter.Create();
+        }
+
+
+        /// <summary>
         /// Constructor for injecting utilities.
         /// </summary>
-        public DuoBitArrayUtilities(IBitArrayUtilities bitArrayUtilities, IBitMaskUtilities bitMaskUtilities,
+        protected DuoBitArrayUtilities(IBitArrayUtilities bitArrayUtilities, IBitMaskUtilities bitMaskUtilities,
             IBitCounter bitCounter)
         {
             this.bitArrayUtilities = bitArrayUtilities;
@@ -19,15 +30,9 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         }
 
 
-        /// <summary>
-        /// Default constructor using default utilities.
-        /// </summary>
-        public DuoBitArrayUtilities()
-        {
-            bitArrayUtilities = BitArrayUtilities.Create();
-            bitMaskUtilities = BitMaskUtilities.Create();
-            bitCounter = new BitCounter();
-        }
+        public static IDuoBitArrayUtilities Create(IBitArrayUtilities bitArrayUtilities,
+            IBitMaskUtilities bitMaskUtilities, IBitCounter bitCounter)
+            => new DuoBitArrayUtilities(bitArrayUtilities, bitMaskUtilities, bitCounter);
 
 
         IBitArrayUtilities bitArrayUtilities;
@@ -68,13 +73,13 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         public byte GetByteLsbMask(int numBitsToMask) => bitMaskUtilities.GetByteLsbMask(numBitsToMask);
         public byte GetByteMsbMask(int numBitsToMask) => bitMaskUtilities.GetByteMsbMask(numBitsToMask);
         public byte GetMaskForBitIndex(int lsb0BitIndex) => bitMaskUtilities.GetMaskForBitIndex(lsb0BitIndex);
-        
-            public byte[] GetInvertedBytes(byte[] bitArray) => bitArrayUtilities.GetInvertedBytes(bitArray);
+
+        public byte[] GetInvertedBytes(byte[] bitArray) => bitArrayUtilities.GetInvertedBytes(bitArray);
 
 
         public int GetMinNumBytesToStoreBits(int numEnclosedBits)
             => bitArrayUtilities.GetMinNumBytesToStoreBits(numEnclosedBits);
-        
+
         public int GetNumBitsInUseInLastByte(int numBitsInArray)
             => bitArrayUtilities.GetNumBitsInUseInLastByte(numBitsInArray);
 

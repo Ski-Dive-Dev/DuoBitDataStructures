@@ -54,7 +54,11 @@ namespace SkiDiveDev.DuoBitDataStructures.BitArrays
         bool this[int index] { get; }
 
 
+        /// <summary>
+        /// Gets the value of the bit identified with the given index within the bit array that underlies both the
+        /// left and right bit arrays.
+        /// </summary>
+        /// <param name="index">The 0-based index of the bit within the bit array.</param>
         byte GetBit(int index);
-        void ClearBit(int index);
     }
 }
